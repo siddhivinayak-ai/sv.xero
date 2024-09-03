@@ -70,38 +70,32 @@ function placeOrder(vendorIndex) {
 
 
 
-
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Show loading animation
-  const loadingElement = document.getElementById('loading');
-  loadingElement.style.display = 'block';
-
-  // Function to hide loading animation and ask for location permissions
-  const hideLoadingAndAskForLocation = () => {
-    loadingElement.style.display = 'none';
-
-    // Check for location permissions
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          console.log('Location retrieved:', position);
-          // Additional code to handle the retrieved location can be added here
-        },
-        (error) => {
-          alert('Unable to retrieve your location.');
-        }
-      );
-    } else {
-      alert('Geolocation is not supported by this browser.');
-    }
-
-    
-  };
-
-  // Hide loading animation and ask for location after 2 seconds
-  setTimeout(hideLoadingAndAskForLocation, 2000); // 2000 milliseconds = 2 seconds
+document.addEventListener('DOMContentLoaded', function() {
+  // Check if location permission has already been requested
+  if (!localStorage.getItem('locationPermission')) {
+      // Ask for location permission
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+              function(position) {
+                  // Store the permission granted flag
+                  localStorage.setItem('locationPermission', 'granted');
+                  // You can use the position.coords.latitude and position.coords.longitude
+                  console.log("Latitude: " + position.coords.latitude + ", Longitude: " + position.coords.longitude);
+              },
+              function(error) {
+                  console.error("Error occurred. Error code: " + error.code);
+                  // Handle errors here
+              }
+          );
+      } else {
+          console.log("Geolocation is not supported by this browser.");
+      }
+  } else {
+      console.log("Location permission already granted.");
+      // Optionally retrieve and use the previously stored location data
+  }
 });
+
 
 
 

@@ -188,65 +188,71 @@ nav ul li a {
 
 
 
+#map-container {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%; /* Default aspect ratio for 16:9 screens */
+  overflow: hidden;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#loading {
-  position: fixed;
+#map-container iframe {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.9);
-  display: flex;
-  flex-direction: column; /* Align items vertically */
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+  border: 0;
 }
 
-#loading img {
-  width: 100px; /* Adjust as needed */
-  height: auto;
-  margin-bottom: 20px; /* Space between the image and progress bar */
+/* Adjustments for mobile devices */
+@media (max-width: 768px) {
+  #map-container {
+    padding-bottom: 75%; /* Increase aspect ratio for taller map on mobile */
+  }
 }
 
-#loading .progress-bar {
-  width: 100px; /* Adjust as needed */
-  height: 10px;
-  background: #ccc;
-  border-radius: 5px;
-  position: relative;
+@media (max-width: 480px) {
+  #map-container {
+    padding-bottom: 100%; /* Make the map square on very small screens */
+  }
 }
 
-#loading .progress-bar::before {
-  content: '';
-  display: block;
-  width: 50%; 
-  height: 100%;
-  background: #f5c518; 
-  border-radius: 5px;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
