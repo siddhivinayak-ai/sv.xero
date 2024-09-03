@@ -87,6 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
       localStorage.setItem('orders', JSON.stringify(orders));
 
       // Redirect to order history page
-    //   window.location.href = 'order-his.html';
+      window.location.href = 'order-his.html';
   });
 });
