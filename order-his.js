@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
       orderCard.classList.add('order-card');
 
       orderCard.innerHTML = `
-          <button class="delete-btn" onclick="deleteOrder(${index})">Delete</button>
+          <button style="background-color:red; color:white; margin-bottom:10px;" class="delete-btn" onclick="deleteOrder(${index})">Delete</button>
           <h3>${order.vendorName}</h3>
           <p class="document-name">Document: ${order.uploadedDocument || 'N/A'}</p>
           <p>Paper Size: ${order.paperSize}</p>
